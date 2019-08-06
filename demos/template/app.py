@@ -42,26 +42,26 @@ def index():
     return render_template('index.html')
 
 
-# register template context handler
+# register templates context handler
 @app.context_processor
 def inject_info():
     foo = 'I am foo.'
     return dict(foo=foo)  # equal to: return {'foo': foo}
 
 
-# register template global function
+# register templates global function
 @app.template_global()
 def bar():
     return 'I am bar.'
 
 
-# register template filter
+# register templates filter
 @app.template_filter()
 def musical(s):
     return s + Markup(' &#9835;')
 
 
-# register template test
+# register templates test
 @app.template_test()
 def baz(n):
     if n == 'baz':

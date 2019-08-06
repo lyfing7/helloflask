@@ -6,15 +6,14 @@
     :license: MIT, see LICENSE for more details.
 """
 import click
-from flask import Flask
+from flask import Flask,request,current_app
 
 app = Flask(__name__)
 
-
-# the minimal Flask application
 @app.route('/')
 def index():
-    return '<h1>Hello, World!</h1>'
+    user_agent = request.headers.get('User-Agent')
+    return '<p>Your browser is %s</p>' % user_agent
 
 
 # bind multiple URL for one view function
@@ -36,3 +35,4 @@ def greet(name):
 def hello():
     """Just say hello."""
     click.echo('Hello, Human!')
+
